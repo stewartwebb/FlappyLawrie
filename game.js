@@ -1,3 +1,4 @@
+// My player object
 function player(x, y, image){
 	this.vx = 0;
 	this.vy = 0;
@@ -56,6 +57,7 @@ function end(){
 	localStorage.setItem("highscore", highscore);
 }
 
+// The main game loop function.
 function game(){
 	var gamer
 	var viewport
@@ -64,6 +66,7 @@ function game(){
 	var score = 0
 	var click = false
 	
+	// This code runs once at the start of the game
 	this.setup = function(){
 		gamer = new player(100, 300, "img/player.png")
 		viewport = new jaws.Viewport({max_x: 10000, max_y: 600})
@@ -80,6 +83,7 @@ function game(){
 		}
 		
 	}
+	// This code runs each game tick and does all the logic
 	this.update = function(){
 		if(!gameOver){
 			if(Math.round((gamer.sprite.x - 750) / 300) > 0){ score = Math.round((gamer.sprite.x - 750) / 300) } else{ score = 0 }
@@ -107,6 +111,7 @@ function game(){
 			document.getElementById("highscore").innerHTML = "Highscore " + highscore
 		}
 	}
+	// This code draws the game on the screen each game tick
 	this.draw = function(){
 			jaws.clear()
 			parallax.draw()
